@@ -18,7 +18,9 @@ export const OrbitalDisplay = memo(function OrbitalDisplay() {
       <circle cx="50" cy="50" r="24" fill="none" stroke="var(--color-line)" strokeWidth="0.4" strokeDasharray="2 2" />
       <circle cx="50" cy="50" r="11" fill="rgb(98 255 215 / 10%)" stroke="var(--color-primary)" strokeWidth="0.8" />
       {iss && issPosition && <motion.g style={{ transformOrigin: "50px 50px" }} animate={{ rotate: 360 }} transition={{ duration: 20, ease: "linear", repeat: Infinity }}><title>{`ISS // ${Math.round(iss.altitudeKm)} km // ${Math.round(iss.velocityKph)} km/h`}</title><circle cx={issPosition[0]} cy={issPosition[1]} r="1.8" fill="var(--color-primary)" /></motion.g>}
-      {satellites.map((satellite, index) => { const [cx, cy] = markerPositions[index]; return <motion.g key={satellite.id} style={{ transformOrigin: "50px 50px" }} className="will-change-transform" animate={{ rotate: 360 }} transition={{ duration: 18 + index * 2, ease: "linear", repeat: Infinity }}><title>{`${satellite.name} // NORAD ${satellite.noradId}${satellite.altitudeKm ? ` // ${satellite.altitudeKm} km` : ""}`}</title><circle cx={cx} cy={cy} r="1.6" fill="var(--color-accent)" /></motion.g>; })}
+      <motion.g style={{ transformOrigin: "50px 50px" }} className="will-change-transform" animate={{ rotate: 360 }} transition={{ duration: 24, ease: "linear", repeat: Infinity }}>
+        {satellites.map((satellite, index) => { const [cx, cy] = markerPositions[index]; return <g key={satellite.id}><title>{`${satellite.name} // NORAD ${satellite.noradId}${satellite.altitudeKm ? ` // ${satellite.altitudeKm} km` : ""}`}</title><circle cx={cx} cy={cy} r="1.6" fill="var(--color-accent)" /></g>; })}
+      </motion.g>
     </svg>
     <div className="absolute left-4 top-4 text-[0.625rem] uppercase tracking-[0.15em] text-[var(--color-muted)]">{loading ? "Orbital display / syncing" : error ? "Orbital display / unavailable" : `Orbital display / ${satellites.length} active`}</div>
   </div>;

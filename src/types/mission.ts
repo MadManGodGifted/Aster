@@ -1,4 +1,4 @@
-export type ConnectionState = "connecting" | "syncing" | "live" | "delayed" | "offline";
+export type ConnectionState = "connecting" | "syncing" | "live" | "delayed" | "degraded" | "offline";
 
 export interface OrbitingSatellite {
   id: string;
@@ -25,14 +25,14 @@ export interface CloseApproach {
 }
 
 export interface MissionTelemetry {
-  trackedObjects: number;
-  closeApproaches: number;
+  trackedObjects: number | null;
+  closeApproaches: number | null;
   hazardIndex: number;
-  hazardLevel: "low" | "elevated" | "high";
-  latencyMs: number;
+  hazardLevel: "low" | "elevated" | "high" | null;
+  latencyMs: number | null;
 }
 
-export type ServiceHealth = "connected" | "error";
+export type ServiceHealth = "connected" | "degraded" | "offline";
 
 export interface MissionSnapshot {
   satellites: OrbitingSatellite[];
@@ -41,6 +41,8 @@ export interface MissionSnapshot {
   telemetry: MissionTelemetry;
   connection: ConnectionState;
   services: Record<"nasa" | "n2yo" | "celestrak" | "iss", ServiceHealth>;
+  serviceErrors: Partial<Record<"nasa" | "n2yo" | "celestrak" | "iss", string>>;
+  sourceLatencyMs: Partial<Record<"nasa" | "n2yo" | "celestrak" | "iss", number>>;
   updatedAt: string;
   sourceErrors: string[];
 }

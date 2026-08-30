@@ -4,7 +4,7 @@ import { useMissionSnapshot } from "@/hooks/useMissionSnapshot";
 import { ConnectionState } from "@/types/mission";
 
 const statusCopy: Record<ConnectionState, { label: string; tone: "operational" | "warning" | "critical" }> = {
-  connecting: { label: "Connecting...", tone: "warning" }, syncing: { label: "Syncing telemetry...", tone: "warning" }, live: { label: "Live", tone: "operational" }, delayed: { label: "Data delayed", tone: "warning" }, offline: { label: "Offline", tone: "critical" },
+  connecting: { label: "Connecting...", tone: "warning" }, syncing: { label: "Syncing telemetry...", tone: "warning" }, live: { label: "Live", tone: "operational" }, delayed: { label: "Data delayed", tone: "warning" }, degraded: { label: "Degraded", tone: "warning" }, offline: { label: "Offline", tone: "critical" },
 };
 
 export function StatusIndicator() {

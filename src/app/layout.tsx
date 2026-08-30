@@ -3,6 +3,7 @@ import "./globals.css";
 import { AppShell } from "@/components/layout/AppShell";
 import { ServiceWorkerRegistration } from "@/components/layout/ServiceWorkerRegistration";
 import { QueryProvider } from "@/components/providers/QueryProvider";
+import { PerformanceInstrumentation } from "@/components/diagnostics/PerformanceInstrumentation";
 import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
 import { cn } from "@/lib/utils";
 
@@ -27,4 +28,4 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false },
 };
 export const viewport: Viewport = { themeColor: "#05060A", colorScheme: "dark", viewportFit: "cover" };
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en" className={cn("dark", spaceGrotesk.variable, ibmPlexMono.variable)}><body className="scanlines grain"><ServiceWorkerRegistration /><QueryProvider><AppShell>{children}</AppShell></QueryProvider></body></html>; }
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en" className={cn("dark", spaceGrotesk.variable, ibmPlexMono.variable)}><body className="scanlines grain"><PerformanceInstrumentation /><ServiceWorkerRegistration /><QueryProvider><AppShell>{children}</AppShell></QueryProvider></body></html>; }

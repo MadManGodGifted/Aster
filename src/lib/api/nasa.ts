@@ -1,4 +1,5 @@
 import { CloseApproach, NasaFeedResponse, NasaNeo } from "@/types/mission";
+import { ExternalApiError, fetchJson, requireApiKey } from "@/lib/api/request";
 
 const NASA_NEO_URL = "https://api.nasa.gov/neo/rest/v1/feed";
 
@@ -11,8 +12,7 @@ function toRisk(neo: NasaNeo, distanceKm: number): CloseApproach["risk"] {
 }
 
 export async function fetchCloseApproaches(): Promise<CloseApproach[]> {
-  const apiKey = process.env.NASA_API_KEY;
-  if (!apiKey) throw new Error("NASA_API_KEY is not configured");
+  const apiKey = requireApiKey("NASA_API_KEY");
   const today = new Date();
   const endDate = new Date(today);
   endDate.setUTCDate(today.getUTCDate() + 1);
@@ -20,9 +20,8 @@ export async function fetchCloseApproaches(): Promise<CloseApproach[]> {
   url.searchParams.set("start_date", dateKey(today));
   url.searchParams.set("end_date", dateKey(endDate));
   url.searchParams.set("api_key", apiKey);
-  const response = await fetch(url, { next: { revalidate: 300 } });
-  if (!response.ok) throw new Error(`NASA request failed (${response.status})`);
-  const payload = (await response.json()) as NasaFeedResponse;
+  const payload = await fetchJson<NasaFeedResponse>("NASA", url, 12000, { next: { revalidate: 300 } });
+  if (!payload.near_earth_objects || typeof payload.near_earth_objects !== "object") throw new ExternalApiError("NASA", "NASA returned an invalid NEO payload");
   return Object.values(payload.near_earth_objects).flat().flatMap((neo) => {
     const approach = neo.close_approach_data[0];
     if (!approach) return [];
