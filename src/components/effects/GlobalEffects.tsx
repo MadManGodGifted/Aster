@@ -1,5 +1,5 @@
 export function GlobalEffects() {
-  return <><div className="vignette" aria-hidden="true" /><div className="scanlines" aria-hidden="true" /><div className="grain" aria-hidden="true" /></>;
+  return <><div className="tactical-grid" aria-hidden="true" /><div className="vignette" aria-hidden="true" /><div className="scanlines" aria-hidden="true" /><div className="grain" aria-hidden="true" /></>;
 }
 
 export function GridOverlay({ className = "" }: { className?: string }) {
