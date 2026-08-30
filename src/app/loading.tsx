@@ -1,0 +1,1 @@
+export default function Loading() { return <div className="grid min-h-[70dvh] place-items-center p-8 text-xs uppercase tracking-[0.18em] text-[var(--color-primary)]">Initializing terminal<span className="terminal-cursor">_</span></div>; }

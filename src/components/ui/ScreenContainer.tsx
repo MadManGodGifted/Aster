@@ -1,0 +1,1 @@
+export function ScreenContainer({ children }: { children: React.ReactNode }) { return <main className="mx-auto w-full max-w-7xl px-[var(--space-2)] pb-28 pt-[var(--space-3)] sm:px-[var(--space-3)] lg:px-[var(--space-4)]">{children}</main>; }

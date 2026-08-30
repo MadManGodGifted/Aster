@@ -1,0 +1,6 @@
+import { ScreenContainer } from "@/components/ui/ScreenContainer";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { PlaceholderState } from "@/components/ui/PlaceholderState";
+import { CommandButton } from "@/components/ui/CommandButton";
+
+export default function ExplorerPage() { return <ScreenContainer><div className="space-y-[var(--space-4)]"><div><p className="m-0 text-[0.625rem] uppercase tracking-[0.2em] text-[var(--color-accent)]">02 / Object Registry</p><h1 className="m-0 mt-2 font-[var(--font-display)] text-3xl uppercase tracking-[0.08em]">Explorer</h1></div><div className="flex flex-col gap-2 sm:flex-row"><input aria-label="Search registry" placeholder="SEARCH DESIGNATION..." className="min-h-11 flex-1 border border-[var(--color-line)] bg-[var(--color-panel)] px-3 text-xs uppercase tracking-[0.12em] text-[var(--color-information)] outline-none placeholder:text-[var(--color-muted)] focus:border-[var(--color-primary)]" /><CommandButton>Initialize search</CommandButton></div><SectionHeader index="//" title="Object registry" detail="Filters offline" /><PlaceholderState title="Registry offline" description="The explorer interface is ready. Live object records will be connected in a later phase." /></div></ScreenContainer>; }

@@ -1,0 +1,1 @@
+export function MetricDisplay({ label, value }: { label: string; value: string }) { return <div><p className="m-0 text-[0.625rem] uppercase tracking-[0.14em] text-[var(--color-muted)]">{label}</p><p className="m-0 mt-1 font-mono text-sm text-[var(--color-information)]">{value}</p></div>; }
