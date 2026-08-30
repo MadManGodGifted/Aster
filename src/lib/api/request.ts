@@ -12,7 +12,11 @@ const bodyLimit = 280;
 
 function isDevelopment(): boolean { return process.env.NODE_ENV === "development"; }
 function truncate(value: string): string { return value.length > bodyLimit ? `${value.slice(0, bodyLimit)}…` : value; }
-function sanitizeBody(value: string): string { return value.replace(/((?:api_?key)=)[^&"\s]+/gi, "$1***"); }
+function sanitizeBody(value: string): string {
+  return value
+    .replace(/((?:api_?key)=)[^&"\s]+/gi, "$1***")
+    .replace(/("(?:api_?key|apiKey)"\s*:\s*")[^"]+/gi, "$1***");
+}
 function safeUrl(url: URL): string {
   const copy = new URL(url);
   for (const key of [...copy.searchParams.keys()]) {
