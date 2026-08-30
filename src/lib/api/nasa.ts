@@ -20,7 +20,7 @@ export async function fetchCloseApproaches(): Promise<CloseApproach[]> {
   url.searchParams.set("start_date", dateKey(today));
   url.searchParams.set("end_date", dateKey(endDate));
   url.searchParams.set("api_key", apiKey);
-  const response = await fetch(url, { next: { revalidate: 30 } });
+  const response = await fetch(url, { next: { revalidate: 300 } });
   if (!response.ok) throw new Error(`NASA request failed (${response.status})`);
   const payload = (await response.json()) as NasaFeedResponse;
   return Object.values(payload.near_earth_objects).flat().flatMap((neo) => {

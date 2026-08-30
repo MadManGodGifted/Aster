@@ -11,5 +11,6 @@ export function StatusIndicator() {
   const { loading, error, data, isFetching } = useMissionSnapshot();
   const state: ConnectionState = error ? "offline" : loading ? "connecting" : isFetching ? "syncing" : data?.connection ?? "offline";
   const status = statusCopy[state];
-  return <StatusChip tone={status.tone}>{status.label}</StatusChip>;
+  const healthTitle = data ? Object.entries(data.services).map(([service, health]) => `${service.toUpperCase()}: ${health}`).join(" | ") : undefined;
+  return <StatusChip tone={status.tone} title={healthTitle}>{status.label}</StatusChip>;
 }

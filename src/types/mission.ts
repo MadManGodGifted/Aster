@@ -28,8 +28,11 @@ export interface MissionTelemetry {
   trackedObjects: number;
   closeApproaches: number;
   hazardIndex: number;
+  hazardLevel: "low" | "elevated" | "high";
   latencyMs: number;
 }
+
+export type ServiceHealth = "connected" | "error";
 
 export interface MissionSnapshot {
   satellites: OrbitingSatellite[];
@@ -37,6 +40,7 @@ export interface MissionSnapshot {
   iss: IssPosition | null;
   telemetry: MissionTelemetry;
   connection: ConnectionState;
+  services: Record<"nasa" | "n2yo" | "celestrak" | "iss", ServiceHealth>;
   updatedAt: string;
   sourceErrors: string[];
 }

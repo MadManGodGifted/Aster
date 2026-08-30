@@ -13,7 +13,7 @@ function calculateAltitudeKm(meanMotion: number): number | null {
 }
 
 export async function fetchActiveSatellites(): Promise<OrbitingSatellite[]> {
-  const response = await fetch(CELESTRAK_STATIONS_URL, { next: { revalidate: 30 } });
+  const response = await fetch(CELESTRAK_STATIONS_URL, { next: { revalidate: 900 } });
   if (!response.ok) throw new Error(`CelesTrak request failed (${response.status})`);
   const records = (await response.json()) as CelestrakRecord[];
   return records.slice(0, 12).map((record) => ({

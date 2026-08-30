@@ -1,5 +1,9 @@
-export async function fetchN2yoSatellite(noradId: number): Promise<never> {
+interface N2yoHealthResponse { info?: { category?: string }; }
+
+export async function verifyN2yoConnection(): Promise<void> {
   const apiKey = process.env.N2YO_API_KEY;
   if (!apiKey) throw new Error("N2YO_API_KEY is not configured");
-  throw new Error(`N2YO satellite lookup for ${noradId} requires an observer location`);
+  const response = await fetch(`https://api.n2yo.com/rest/v1/satellite/above/0/0/0/10/18/&apiKey=${apiKey}`, { next: { revalidate: 600 } });
+  if (!response.ok) throw new Error(`N2YO request failed (${response.status})`);
+  await response.json() as N2yoHealthResponse;
 }

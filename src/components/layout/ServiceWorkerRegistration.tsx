@@ -9,7 +9,7 @@ export function ServiceWorkerRegistration() {
     }
 
     if (process.env.NODE_ENV !== "production") {
-      const recoveryKey = "aster-development-cache-recovered";
+      const recoveryKey = "aster-development-cache-recovered-v2";
       void Promise.all([
         navigator.serviceWorker
           .getRegistrations()
@@ -20,7 +20,9 @@ export function ServiceWorkerRegistration() {
       ]).then(() => {
         if (!sessionStorage.getItem(recoveryKey)) {
           sessionStorage.setItem(recoveryKey, "true");
-          window.location.reload();
+          const recoveryUrl = new URL(window.location.href);
+          recoveryUrl.searchParams.set("__aster_cache_recovered", "1");
+          window.location.replace(recoveryUrl.toString());
         }
       });
       return;
