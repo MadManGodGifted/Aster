@@ -1,4 +1,4 @@
-# 🚀 ASTER
+# 🚀 VOID
 
 > Real-Time Near-Earth Object Monitoring Platform
 
@@ -6,9 +6,9 @@
 
 # Vision
 
-Aster is a mobile-first space situational awareness platform designed to make Near-Earth Object (NEO) monitoring accessible, immersive, and visually engaging.
+VOID is a mobile-first space situational awareness platform designed to make Near-Earth Object (NEO) monitoring accessible, immersive, and visually engaging.
 
-Instead of presenting asteroid data through traditional dashboards or tables, Aster transforms scientific information into a cinematic mission-control experience inspired by aerospace interfaces of the late 20th century.
+Instead of presenting asteroid data through traditional dashboards or tables, VOID transforms scientific information into a cinematic mission-control experience inspired by aerospace interfaces of the late 20th century.
 
 The application retrieves live astronomical data from public APIs such as NASA and visualizes asteroid trajectories, close approaches, spacecraft, and orbital information using interactive graphics and real-time rendering.
 
@@ -96,9 +96,9 @@ Web Optional
 
 # Core Philosophy
 
-Aster is not a dashboard.
+VOID is not a dashboard.
 
-Aster is a mission terminal.
+VOID is a mission terminal.
 
 Every screen should communicate that the user is monitoring real celestial activity.
 

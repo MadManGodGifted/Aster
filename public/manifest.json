@@ -1,6 +1,6 @@
 {
-  "name": "ASTER Mission Terminal",
-  "short_name": "ASTER",
+  "name": "VOID Mission Terminal",
+  "short_name": "VOID",
   "description": "Near-Earth Object monitoring platform.",
   "start_url": "/",
   "display": "standalone",

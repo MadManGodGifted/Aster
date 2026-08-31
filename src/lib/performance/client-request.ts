@@ -6,7 +6,7 @@ export async function fetchClientJson<T>(url: string, label: string): Promise<T>
     return await response.json() as T;
   } finally {
     if (process.env.NODE_ENV === "development") {
-      console.info(`[aster:performance] ${label} ${Math.round(performance.now() - startedAt)}ms`);
+      console.info(`[void:performance] ${label} ${Math.round(performance.now() - startedAt)}ms`);
     }
   }
 }

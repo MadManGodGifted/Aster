@@ -1,4 +1,4 @@
-const CACHE_NAME = "aster-shell-v2";
+const CACHE_NAME = "void-shell-v1";
 const APP_SHELL = ["/", "/manifest.json", "/favicon.svg", "/icons/icon.svg"];
 
 self.addEventListener("install", (event) => {
@@ -9,7 +9,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) => Promise.all(
-      keys.filter((key) => key.startsWith("aster-") && key !== CACHE_NAME).map((key) => caches.delete(key)),
+      keys.filter((key) => key.startsWith("void-") && key !== CACHE_NAME).map((key) => caches.delete(key)),
     )).then(() => self.clients.claim()),
   );
 });

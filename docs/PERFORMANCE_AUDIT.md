@@ -1,6 +1,6 @@
-# Aster performance audit
+# VOID performance audit
 
-Audit date: 2026-08-30. Scope: React rendering, network polling, animation/compositing, retained client state, and server request duration. Development builds now log browser long tasks of 50 ms or more and client request durations using the `[aster:performance]` prefix. Server-side upstream timings remain logged by `src/lib/api/request.ts` in development.
+Audit date: 2026-08-30. Scope: React rendering, network polling, animation/compositing, retained client state, and server request duration. Development builds now log browser long tasks of 50 ms or more and client request durations using the `[void:performance]` prefix. Server-side upstream timings remain logged by `src/lib/api/request.ts` in development.
 
 ## Ranked findings
 

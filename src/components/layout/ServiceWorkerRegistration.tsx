@@ -9,19 +9,19 @@ export function ServiceWorkerRegistration() {
     }
 
     if (process.env.NODE_ENV !== "production") {
-      const recoveryKey = "aster-development-cache-recovered-v2";
+      const recoveryKey = "void-development-cache-recovered-v1";
       void Promise.all([
         navigator.serviceWorker
           .getRegistrations()
           .then((registrations) => Promise.all(registrations.map((registration) => registration.unregister()))),
         caches.keys().then((keys) => Promise.all(
-          keys.filter((key) => key.startsWith("aster-")).map((key) => caches.delete(key)),
+          keys.filter((key) => key.startsWith("void-")).map((key) => caches.delete(key)),
         )),
       ]).then(() => {
         if (!sessionStorage.getItem(recoveryKey)) {
           sessionStorage.setItem(recoveryKey, "true");
           const recoveryUrl = new URL(window.location.href);
-          recoveryUrl.searchParams.set("__aster_cache_recovered", "1");
+          recoveryUrl.searchParams.set("__void_cache_recovered", "1");
           window.location.replace(recoveryUrl.toString());
         }
       });

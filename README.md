@@ -1,8 +1,8 @@
-# Aster
+# VOID
 
 > A real-time orbital intelligence platform for monitoring Near-Earth Objects and the International Space Station.
 
-Aster turns public orbital data into a responsive mission-control experience. It combines live NEO discovery, close-approach intelligence, ISS telemetry, and interactive 3D visualisations in a mobile-first Next.js application.
+VOID turns public orbital data into a responsive mission-control experience. It combines live NEO discovery, close-approach intelligence, ISS telemetry, and interactive 3D visualisations in a mobile-first Next.js application.
 
 ## Highlights
 
@@ -17,7 +17,7 @@ Aster turns public orbital data into a responsive mission-control experience. It
 
 ## ISS Command Center
 
-Aster’s ISS Command Center offers two interactive operational views, backed by live position telemetry and designed for clear at-a-glance orbital awareness.
+VOID’s ISS Command Center offers two interactive operational views, backed by live position telemetry and designed for clear at-a-glance orbital awareness.
 
 ### Geocentric tactical map
 
@@ -70,7 +70,7 @@ NASA_API_KEY=your_nasa_api_key
 N2YO_API_KEY=your_n2yo_api_key
 ```
 
-Never commit `.env.local` or expose these keys in browser code. Aster routes external requests through Next.js route handlers.
+Never commit `.env.local` or expose these keys in browser code. VOID routes external requests through Next.js route handlers.
 
 ### Run locally
 
@@ -91,7 +91,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Data sources
 
-Aster uses publicly available services through server-side API routes:
+VOID uses publicly available services through server-side API routes:
 
 - [NASA NeoWs](https://api.nasa.gov/) for NEO search and close-approach data
 - [N2YO](https://www.n2yo.com/) for ISS pass prediction data
@@ -123,7 +123,7 @@ public/
 
 ## Design system
 
-The interface follows Aster’s retro-futuristic aerospace language: industrial panels, thin structural borders, monospaced telemetry, subtle scanlines, and purposeful motion. Visual tokens are defined centrally in `src/app/globals.css`; components use those tokens rather than ad-hoc visual values.
+The interface follows VOID’s retro-futuristic aerospace language: industrial panels, thin structural borders, monospaced telemetry, subtle scanlines, and purposeful motion. Visual tokens are defined centrally in `src/app/globals.css`; components use those tokens rather than ad-hoc visual values.
 
 The current visual direction uses a near-black command surface with mint operational signals, amber warnings, and red critical states. It is designed to read as an orbital operations terminal, not a generic dashboard.
 

@@ -30,7 +30,7 @@ export function requireApiKey(name: "NASA_API_KEY" | "N2YO_API_KEY"): string {
   if (!value) throw new ExternalApiError(name.replace("_API_KEY", ""), `${name} is undefined`);
   if (isDevelopment() && !loggedKeys.has(name)) {
     loggedKeys.add(name);
-    console.info(`[aster:env] ${name}=****${value.slice(-4)}`);
+    console.info(`[void:env] ${name}=****${value.slice(-4)}`);
   }
   return value;
 }
@@ -41,19 +41,19 @@ export async function fetchJson<T>(source: string, url: URL, timeoutMs: number, 
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
   const requestUrl = safeUrl(url);
   try {
-    if (isDevelopment()) console.info(`[aster:${source}] GET ${requestUrl}`);
-    const response = await fetch(url, { ...init, signal: controller.signal, headers: { Accept: "application/json", "User-Agent": "Aster-Mission-Control/1.0", ...init.headers } });
+    if (isDevelopment()) console.info(`[void:${source}] GET ${requestUrl}`);
+    const response = await fetch(url, { ...init, signal: controller.signal, headers: { Accept: "application/json", "User-Agent": "VOID-Mission-Control/1.0", ...init.headers } });
     const body = await response.text();
     const durationMs = Math.round(performance.now() - startedAt);
     const safeBody = truncate(sanitizeBody(body));
-    if (isDevelopment()) console.info(`[aster:${source}] ${response.status} ${durationMs}ms ${safeBody}`);
+    if (isDevelopment()) console.info(`[void:${source}] ${response.status} ${durationMs}ms ${safeBody}`);
     if (!response.ok) throw new ExternalApiError(source, `${source} API returned ${response.status}: ${safeBody}`, response.status, safeBody);
     try { return JSON.parse(body) as T; } catch { throw new ExternalApiError(source, `${source} returned invalid JSON`, response.status, safeBody); }
   } catch (error) {
     if (error instanceof ExternalApiError) throw error;
     const durationMs = Math.round(performance.now() - startedAt);
     const message = controller.signal.aborted ? `${source} fetch timed out after ${timeoutMs}ms` : `${source} endpoint unreachable: ${error instanceof Error ? error.message : "unknown network error"}`;
-    if (isDevelopment()) console.error(`[aster:${source}] ${message} (${durationMs}ms)`);
+    if (isDevelopment()) console.error(`[void:${source}] ${message} (${durationMs}ms)`);
     throw new ExternalApiError(source, message);
   } finally { clearTimeout(timeout); }
 }

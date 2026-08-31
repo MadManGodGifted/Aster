@@ -4,15 +4,15 @@
 
 # Philosophy
 
-Aster is not minimal.
+VOID is not minimal.
 
-Aster is functional.
+VOID is functional.
 
 Every pixel should feel engineered.
 
 ---
 
-# Aster IS
+# VOID IS
 
 Mission Control
 
@@ -32,7 +32,7 @@ Atmospheric
 
 ---
 
-# Aster is NOT
+# VOID is NOT
 
 Material Design
 

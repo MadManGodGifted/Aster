@@ -19,12 +19,12 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ASTER // Mission Terminal",
+  title: "VOID // Mission Terminal",
   description: "Near-Earth Object monitoring platform.",
-  applicationName: "ASTER",
+  applicationName: "VOID",
   manifest: "/manifest.json",
   icons: { icon: "/favicon.svg", apple: "/icons/icon.svg" },
-  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "ASTER" },
+  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "VOID" },
   formatDetection: { telephone: false },
 };
 export const viewport: Viewport = { themeColor: "#05060A", colorScheme: "dark", viewportFit: "cover" };
